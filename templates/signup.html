@@ -3,20 +3,34 @@
 <form action='/adduser' method="post">
   <label>Username
     <input type='text' name="username" />
-  </label>
+  </label> {% if error == 'Please fill in the username.' %}
+  <p class='error'>{{error}}
+  </p>
+  {% endif %}
 
   <label>Password
     <input type='password' name='password' />
-  </label>
+  </label> {% if error == 'Please fill in the password.' %}
+  <p class='error'>{{error}}</p>
+  {% endif %}
+
+
   <label>Verify Password
     <input type='password' id='verify' name='verify' />
-  </label>
+  </label> {% if error=='Please verify your password.' %}
+  <p class='error'>{{error}}</p>{% endif %} {% if error == 'Passwords do not match. Please try again.' %}
+  <p class='error'> {{error}}</p>
+  {% endif %}
+
+
   <label>Email (optional)
     <input type='text' id='email' name='email'/>
   </label>
+  <!--{% if error %}
+  <p class='error'>{{error}}</p> {% endif %}-->
   <input type='submit' value="Submit" />
 </form>
 
-{% if error %}
+<!--{% if error %}
 <p class='error'>{{ error }}</p>
-{% endif %} {% endblock %}
+{% endif %} {% endblock %}-->

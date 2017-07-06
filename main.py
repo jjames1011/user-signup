@@ -19,21 +19,25 @@ def add_user():
     password = request.form['password']
     verify = request.form['verify']
     email = request.form['email']
+    error = ''
 #checks if username field is filled out
     if(not user):
-        error = 'please fill in the username.'
+        error = 'Please fill in the username.'
         return redirect('/?error=' + error)
 #checks if password field is filled out
     if(password.strip()==""):
         error = 'Please fill in the password.'
+
         return redirect('/?error=' + error)
 #checks if verify field is filled out
     if(verify.strip()==""):
         error= 'Please verify your password.'
+
         return redirect('/?error=' + error)
 #checks if verify field and password field are the same
     if(verify.strip() != password.strip()):
         error = 'Passwords do not match. Please try again.'
+
         return redirect('/?error=' + error)
 
 
