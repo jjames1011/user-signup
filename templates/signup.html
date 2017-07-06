@@ -1,8 +1,10 @@
 {% extends "base.html" %} {% block content %}
-<h1> Sign Up </h1>
+<h1> Signup </h1>
 <form>
-  <label for='username'>Username</label><input type='text' id='username'>
-  <label for='password'>Password</label><input type='text' id='password'>
-  <label for='verify'>Verify Password</label><input type='text' id='verify'>
+  <label for='username'>Username</label><input type='text' id='username' required/>
+  <label for='password'>Password</label><input type='text' id='password' required/>
+  <label for='verify'>Verify Password</label><input type='text' id='verify' required/>
+  <label for='email'>Email (optional)</label><input type='email' id='verify' />
+  <input type='submit' value="Submit">
 </form>
 {% endblock %}
