@@ -24,10 +24,16 @@ def add_user():
     if(not user):
         error = 'Please fill in the username.'
         return redirect('/?error=' + error)
-#checks if password field is filled out
+    if(' ' in user or len(user) < 3 or len(user) > 20):
+        error = 'Usernames can not contain spaces and must be between 3-20 characters long.'
+        return redirect('/?error=' + error)
+#checks if password field is filled out properly
     if(password.strip()==""):
         error = 'Please fill in the password.'
+        return redirect('/?error=' + error)
 
+    if(' ' in password or len(password) < 3 or len(password) > 20):
+        error = 'Passwords can not contain spaces and must be between 3-20 characters long.'
         return redirect('/?error=' + error)
 #checks if verify field is filled out
     if(verify.strip()==""):
@@ -39,6 +45,11 @@ def add_user():
         error = 'Passwords do not match. Please try again.'
 
         return redirect('/?error=' + error)
+
+    if(len(email)>0):
+        if('@' not in email or '.' not in email or len(email)<3 or len(email)>20):
+            error = "Not a valid email."
+            return redirect('/?error=' + error)
 
 
 

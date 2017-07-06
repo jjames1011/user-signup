@@ -6,6 +6,8 @@
   </label> {% if error == 'Please fill in the username.' %}
   <p class='error'>{{error}}
   </p>
+  {% endif %} {% if error == 'Usernames can not contain spaces and must be between 3-20 characters long.' %}
+  <p class='error'>{{error}}</p>
   {% endif %}
 
   <label>Password
@@ -20,12 +22,15 @@
   </label> {% if error=='Please verify your password.' %}
   <p class='error'>{{error}}</p>{% endif %} {% if error == 'Passwords do not match. Please try again.' %}
   <p class='error'> {{error}}</p>
-  {% endif %}
+  {% endif %} {% if error == 'Passwords can not contain spaces and must be between 3-20 characters long.' %}
+  <p class='error'>{{error}}</p> {% endif %}
 
 
   <label>Email (optional)
     <input type='text' id='email' name='email'/>
-  </label>
+  </label> {% if error == 'Not a valid email.' %}
+  <p class='error'>{{error}}</p>
+  {% endif %}
   <!--{% if error %}
   <p class='error'>{{error}}</p> {% endif %}-->
   <input type='submit' value="Submit" />
