@@ -2,8 +2,8 @@
 <h1> Signup </h1>
 <form action='/adduser' method="post">
   <label>Username
-    <input type='text' name="username" />
-  </label> {% if error == 'Please fill in the username.' %}
+    <input type='text' name="username" value='{{username}}'/>
+  </label> {% if error == 'Please fill in the username.' %} .
   <p class='error'>{{error}}
   </p>
   {% endif %} {% if error == 'Usernames can not contain spaces and must be between 3-20 characters long.' %}
@@ -27,15 +27,10 @@
 
 
   <label>Email (optional)
-    <input type='text' id='email' name='email'/>
+    <input type='text' value='{{email}}' id='email' name='email'/>
   </label> {% if error == 'Not a valid email.' %}
   <p class='error'>{{error}}</p>
   {% endif %}
-  <!--{% if error %}
-  <p class='error'>{{error}}</p> {% endif %}-->
   <input type='submit' value="Submit" />
 </form>
-
-<!--{% if error %}
-<p class='error'>{{ error }}</p>
-{% endif %} {% endblock %}-->
+{% endblock %}

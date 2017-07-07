@@ -26,11 +26,11 @@ def add_user():
         return redirect('/?error=' + error)
     if(' ' in user or len(user) < 3 or len(user) > 20):
         error = 'Usernames can not contain spaces and must be between 3-20 characters long.'
-        return redirect('/?error=' + error)
+        return render_template('signup.html', username=user, error=error, email=email)
 #checks if password field is filled out properly
     if(password.strip()==""):
         error = 'Please fill in the password.'
-        return redirect('/?error=' + error)
+        return render_template('signup.html', username=user, error=error, email=email)
 
     if(' ' in password or len(password) < 3 or len(password) > 20):
         error = 'Passwords can not contain spaces and must be between 3-20 characters long.'
@@ -39,17 +39,18 @@ def add_user():
     if(verify.strip()==""):
         error= 'Please verify your password.'
 
-        return redirect('/?error=' + error)
+        return render_template('signup.html', username=user, error=error, email=email)
 #checks if verify field and password field are the same
     if(verify.strip() != password.strip()):
         error = 'Passwords do not match. Please try again.'
 
-        return redirect('/?error=' + error)
+        return render_template('signup.html', username=user, error=error, email=email)
 
     if(len(email)>0):
         if('@' not in email or '.' not in email or len(email)<3 or len(email)>20):
             error = "Not a valid email."
-            return redirect('/?error=' + error)
+            return render_template('signup.html', username=user, error=error, email=email)
+
 
 
 
